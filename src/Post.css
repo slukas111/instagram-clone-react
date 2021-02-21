@@ -1,8 +1,30 @@
+/* Avatar and User Posts with text caption */
+.post{
+  max-width: 600px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  margin-bottom: 45px;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px 10px 20px;
+}
+
+.post__avatar {
+  margin-right: 10px;
+}
+
 .post__image {
   width: 100%;
   object-fit: contain;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
 
 .post__text {
     font-weight: normal;
+    padding: 20px;
 }
+
