@@ -2,12 +2,17 @@
   margin: 0;
 }
 .app {
-  background-color: #8875755b;
+  background-color: #fafafa;
+  height: 100vh;
 }
 
 .app__headerImage {
-  background-color: #8875755b;
-  width: 150px;
-  height: 100px;
+  padding: 20px;
+  height: 60px;
   object-fit: contain;
+}
+
+.app__header {
+  border-bottom: 2px solid lightgrey;
+  background-color: white;
 }
