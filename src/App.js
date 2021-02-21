@@ -1,4 +1,5 @@
 import './App.css';
+import Posts from './Posts';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <h1> Hello this is instagram 🚀 </h1>
 
 
-      {/* Posts */}
+      <Posts />
       {/* Posts */}
     </div>
 
