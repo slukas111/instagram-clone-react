@@ -1,3 +1,13 @@
 * {
   margin: 0;
 }
+.app {
+  background-color: #8875755b;
+}
+
+.app__headerImage {
+  background-color: #8875755b;
+  width: 150px;
+  height: 100px;
+  object-fit: contain;
+}
