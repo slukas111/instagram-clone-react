@@ -39,6 +39,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [modalStyle] = useState(getModalStyle);
   // Sign Up within Modal
+  const [openSignIn, setOpenSignIn] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); 
@@ -88,7 +89,14 @@ useEffect(() => {
       })
     })
     .catch((error) => alert(error.message));
-    
+  }
+
+  const signIn = (event) => {
+    event.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email,password)
+      .catch((error) => alert(error.message))
+    setOpenSignIn(false)
   }
   
 
@@ -130,6 +138,37 @@ useEffect(() => {
             </form>
           </div>
         </Modal>
+
+        <Modal
+          open={openSignIn}
+          onClose={() => setOpenSignIn(false)}
+              >
+      <div style={modalStyle} className={classes.paper}>
+      <form className="app__signup">
+        <center>
+          <img 
+            src="/images/insta-logo.png"
+            className="app__headerImage"
+            alt="Instagram Logo" 
+            />
+          </center>
+              <Input 
+                placeholder="email"
+                type="text" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+                />
+              <Input 
+                placeholder="password"
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)}
+                />
+              <Button type="submit" onClick={signIn}>Login</Button>
+            </form>
+          </div>
+        </Modal>
+
       
       <div className="app__header">
         <img 
@@ -141,7 +180,11 @@ useEffect(() => {
       { user ? (
                 <Button onClick={() => auth.signOut()}>Logout</Button>
               ): (
-      <Button onClick = {() => setOpen(true)}>Sign Up</Button>
+      <div className="app__loginContainer">
+        <Button onClick = {() => setOpenSignIn(true)}>Login</Button>
+        <Button onClick = {() => setOpen(true)}>Sign Up</Button>
+
+      </div>
               )}
         <h1> Hello,  welcome to instagram! 🚀</h1>
         {
@@ -150,7 +193,6 @@ useEffect(() => {
             ))
           }
           </div>
-
 );
 }
 
