@@ -1,7 +1,7 @@
 import React, { useState, useEffect  } from 'react';
 import './App.css';
 import Posts from './Posts';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core';
@@ -42,7 +42,30 @@ function App() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); 
+  const [user, setUser] = useState(null);
 
+useEffect(() => {
+  const deleteUser = auth.onAuthStateChanged((authUser) =>{
+    if (authUser) {
+      // user has logged in..
+      console.log(authUser);
+      setUser(authUser);
+      // if (authUser.displayName) {
+
+      // }else{
+      //   return authUser.updateProfile({
+      //     displayName: username,
+      //   })
+      // }
+    }else{
+      // user has logged off.. 
+      setUser(null);
+    }
+  })
+  return () => {
+    deleteUser();
+  }
+}, [user, username]);
 
   //  run once database collection, maping posts + id  
   useEffect(() => {
@@ -55,7 +78,16 @@ function App() {
   }, []);
   
   // sign up and login functions
-  const signUp = (e) => {
+  const signUp = (event) => {
+    event.preventDefault();
+    auth
+    .createUserWithEmailAndPassword(email,password)
+    .then((authUser) => {
+      return authUser.user.updateProfile({
+        displayName: username
+      })
+    })
+    .catch((error) => alert(error.message));
     
   }
   
@@ -94,7 +126,7 @@ function App() {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}
                 />
-              <Button onClick={signUp}>Sign Up</Button>
+              <Button type="submit" onClick={signUp}>Sign Up</Button>
             </form>
           </div>
         </Modal>
@@ -106,8 +138,11 @@ function App() {
         alt="Instagram Logo" 
         />
       </div>
+      { user ? (
+                <Button onClick={() => auth.signOut()}>Logout</Button>
+              ): (
       <Button onClick = {() => setOpen(true)}>Sign Up</Button>
-
+              )}
         <h1> Hello,  welcome to instagram! 🚀</h1>
         {
           posts.map(({id, post}) => (
