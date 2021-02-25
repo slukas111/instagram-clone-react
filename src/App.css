@@ -15,9 +15,24 @@
 .app__header {
   background-color: white;
   border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__headerImage{
+  object-fit: contain;
 }
 
 .app__signup {
   display: flex;
   flex-direction: column;
+}
+
+.app__loginContainer{
+  margin-top: 25px;
+ 
+}
+
+.app__posts{
+  padding: 20px;
 }

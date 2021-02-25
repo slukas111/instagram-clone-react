@@ -77,6 +77,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - [x] Create Modal from Material UI
 - [x] Create Post Card
 - [x] Login, Logout, Signup
+- [x] Post and save file
 - [ ] Navigation bar
 - [ ] Suggested Users
 - [ ] User Comment
@@ -84,5 +85,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - [ ] User Profile
 - [ ] User Upload Profile picture
 - [ ] User edit profile
-- [ ] Following, Follers, Unfollow
+- [ ] Following, Followers, Unfollow
 - [ ] Create Component files and refactor
