@@ -16,9 +16,9 @@ function ImageUpload({username}) {
     };
 
     const handleUpload = () => {
-        const uploadTask = storage.ref('images/${image.name}').put(image);
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on(
-            "state_change",
+            "state_changed",
             (snapshot) => {
                 // progress function
         const progress = Math.round(
@@ -41,16 +41,19 @@ function ImageUpload({username}) {
                             caption: caption,
                             imageUrl: url,
                             username: username
-                        })
-                    })
+                        });
 
+                        setProgress(0);
+                        setCaption("");
+                        setImage(null);
+                    });
             }
-        )
+        );
     
-        }
+    };
     return (
         <div>
- 
+    <progress value={progress} max="100" />
       <input 
         type="text" 
         placeholder="enter a caption.."
