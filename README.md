@@ -69,6 +69,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-[] Setup firebase 🚀
-[√] clean the create-react app initial setup
-[] markup code for design
+## ToDo List
+
+- [x] Setup firebase 🚀
+- [x] clean the create-react app initial setup
+- [x] markup code for design
+- [x] Create Modal from Material UI
+- [x] Create Post Card
+- [x] Login, Logout, Signup
+- [ ] Navigation bar
+- [ ] Suggested Users
+- [ ] User Comment
+- [ ] User Delete Comment
+- [ ] User Profile
+- [ ] User Upload Profile picture
+- [ ] User edit profile
+- [ ] Following, Follers, Unfollow
+- [ ] Create Component files and refactor
